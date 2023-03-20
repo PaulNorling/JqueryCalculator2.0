@@ -1,6 +1,12 @@
 $(document).ready(onReady);
 
-let number='';
+let inputNumber='';
+
+let operator='';
+
+let numberOne='';
+
+let numberTwo='';
 
 function onReady() {
     console.log("onReady")
@@ -14,11 +20,39 @@ function onReady() {
     $('#eightButton').on('click', numberConcat)
     $('#nineButton').on('click', numberConcat)
     $('#zeroButton').on('click', numberConcat)
+    $('#plusButton').on('click', setOperator)
+    $('#equalsButton').on('click',equals)
 }
 
 function numberConcat() {
-    number += $(this).text();
-    $('#calcInput').val(number)
+    inputNumber += $(this).text();
+    $('#calcInput').val(inputNumber)
+}
+
+function setOperator() {
+    $('#calcInput').val('');
+    numberOne=inputNumber;
+    inputNumber='';
+    operator = $(this).text();
+    console.log(operator, numberOne)
+}
+
+function equals() {
+    numberTwo=inputNumber;
+    console.log(numberOne, operator, numberTwo)
+    $.ajax({
+        method: 'POST',
+        url: '/calculation',
+        data: {
+          numberOne: numberOne,
+          numberTwo: numberTwo,
+          operator: operator
+        }
+        }).then(function(response) {
+        console.log(response);
+      }).catch(function(error) {
+        alert(error);
+      })
 }
 
 // function two() {
