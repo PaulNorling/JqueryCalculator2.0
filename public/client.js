@@ -53,10 +53,43 @@ function equals() {
         }
         }).then(function(response) {
         console.log(response);
+        getCalculation();
       }).catch(function(error) {
         alert(error);
       })
 }
+
+function getCalculation() {   
+    $.ajax({
+      method: 'GET',
+      url: '/calculation'
+    }).then(function(response){
+      console.log(response);
+     appendToDom(response);
+    }).catch(function(error){
+      alert('Fail', error);
+    })
+  
+  }
+
+  // render to dom
+function appendToDom(response) {
+    $('#calcInput').val('');
+    operator = null;
+    inputNumber='';
+    $('#output').empty(); 
+    $('#calculation').empty();
+    for(let i = 0; i<response.length; i++){
+      $('#output').prepend(`
+      <li>${response[i].numberOne}${response[i].operator}${response[i].numberTwo}=${response[i].answer}</li>  
+      `)
+      console.log(response[i].answer)
+      $('#calculation').empty();
+      $('#calculation').append(`${response[i].answer}`)
+    }
+  
+  }
+  
 
 // function two() {
 //     number += '2';

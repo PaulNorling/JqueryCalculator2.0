@@ -17,6 +17,12 @@ app.post('/calculation', (req, res) => {
     res.sendStatus(201);
 })
 
+// send updated log of calculations
+app.get('/calculation', (req, res) => {
+    console.log('Request calculation app.get');  
+    res.send(calculatorHistory)
+});
+
 //calculate user input
 function calculator(calc) {         
     let answer = 0;
