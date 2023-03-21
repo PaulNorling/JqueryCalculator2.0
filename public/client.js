@@ -21,6 +21,9 @@ function onReady() {
     $('#nineButton').on('click', numberConcat)
     $('#zeroButton').on('click', numberConcat)
     $('#plusButton').on('click', setOperator)
+    $('#minusButton').on('click', setOperator)
+    $('#multiplyButton').on('click', setOperator)
+    $('#divdeButton').on('click', setOperator)
     $('#equalsButton').on('click',equals)
 }
 
