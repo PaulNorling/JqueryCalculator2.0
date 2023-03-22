@@ -26,6 +26,7 @@ function onReady() {
     $('#divdeButton').on('click', setOperator)
     $('#equalsButton').on('click',equals)
     $('#clearButton').on('click', clearInput)
+    $('#clearAll-btn').on('click', clearAll)
 }
 
 function numberConcat() {
@@ -73,7 +74,7 @@ function getCalculation() {
   
   }
 
-  // render to dom
+// render to dom
 function appendToDom(response) {
     $('#calcInput').val('');
     operator = null;
@@ -91,7 +92,7 @@ function appendToDom(response) {
   
   }
 
-  //clear input values and unselect operator
+//clear input values and unselect operator
 function clearInput() {
     $('#calcInput').val('');
     numberOne=null;
@@ -99,49 +100,19 @@ function clearInput() {
     inputNumber='';
     operator = null;
   }
+
+//request sever to clear history set all fields to empty
+function clearAll() {    
+    clearInput();
+    $.ajax({
+      method: 'DELETE',
+      url: '/calculation'
+    }).then(function(response){
+      getCalculation();
+      console.log(response);
+    }).catch(function(error){
+      alert('something went wrong',error)
+    })
+  }
   
 
-// function two() {
-//     number += '2';
-//     $('#calcInput').val(number)
-// }
-
-// function three() {
-//     number += '3';
-//     $('#calcInput').val(number)
-// }
-
-// function four() {
-//     number += '4';
-//     $('#calcInput').val(number)
-// }
-
-// function five() {
-//     number += '5';
-//     $('#calcInput').val(number)
-// }
-
-// function six() {
-//     number += '3';
-//     $('#calcInput').val(number)
-// }
-
-// function seven() {
-//     number += '7';
-//     $('#calcInput').val(number)
-// }
-
-// function eight() {
-//     number += '8';
-//     $('#calcInput').val(number)
-// }
-
-// function nine() {
-//     number += '9';
-//     $('#calcInput').val(number)
-// }
-
-// function zero() {
-//     number += '0';
-//     $('#calcInput').val(number)
-// }

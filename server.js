@@ -23,6 +23,12 @@ app.get('/calculation', (req, res) => {
     res.send(calculatorHistory)
 });
 
+//clear all stored data 
+app.delete('/calculation', (req, res) => {            
+    calculatorHistory = [];
+    res.sendStatus(200); 
+});
+
 //calculate user input
 function calculator(calc) {         
     let answer = 0;
