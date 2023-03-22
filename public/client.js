@@ -25,6 +25,7 @@ function onReady() {
     $('#multiplyButton').on('click', setOperator)
     $('#divdeButton').on('click', setOperator)
     $('#equalsButton').on('click',equals)
+    $('#clearButton').on('click', clearInput)
 }
 
 function numberConcat() {
@@ -88,6 +89,15 @@ function appendToDom(response) {
       $('#calculation').append(`${response[i].answer}`)
     }
   
+  }
+
+  //clear input values and unselect operator
+function clearInput() {
+    $('#calcInput').val('');
+    numberOne=null;
+    numberTwo=null;
+    inputNumber='';
+    operator = null;
   }
   
 
