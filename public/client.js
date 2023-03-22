@@ -30,15 +30,20 @@ function onReady() {
 }
 
 function numberConcat() {
+    if(numberOne==''){
     inputNumber += $(this).text();
     $('#calcInput').val(inputNumber)
+    }else if(numberOne!==''){
+    inputNumber += $(this).text();
+    $('#calcInput').val(numberOne+operator+inputNumber)
+    }
 }
 
 function setOperator() {
-    $('#calcInput').val('');
-    numberOne=inputNumber;
-    inputNumber='';
     operator = $(this).text();
+    numberOne=inputNumber;
+    $('#calcInput').val(numberOne+operator);
+    inputNumber='';
     console.log(operator, numberOne)
 }
 
@@ -55,6 +60,7 @@ function equals() {
         }
         }).then(function(response) {
         console.log(response);
+        clearInput();
         getCalculation();
       }).catch(function(error) {
         alert(error);
@@ -95,8 +101,8 @@ function appendToDom(response) {
 //clear input values and unselect operator
 function clearInput() {
     $('#calcInput').val('');
-    numberOne=null;
-    numberTwo=null;
+    numberOne='';
+    numberTwo='';
     inputNumber='';
     operator = null;
   }
