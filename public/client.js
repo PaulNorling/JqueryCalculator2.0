@@ -20,6 +20,7 @@ function onReady() {
     $('#eightButton').on('click', numberConcat)
     $('#nineButton').on('click', numberConcat)
     $('#zeroButton').on('click', numberConcat)
+    $('#decimalButton').on('click', numberConcat)
     $('#plusButton').on('click', setOperator)
     $('#minusButton').on('click', setOperator)
     $('#multiplyButton').on('click', setOperator)
@@ -31,14 +32,15 @@ function onReady() {
 
 function numberConcat() {
     if(numberOne==''){
-    inputNumber += $(this).text();
+      inputNumber += $(this).text();
     $('#calcInput').val(inputNumber)
     }else if(numberOne!==''){
-    inputNumber += $(this).text();
-    $('#calcInput').val(numberOne+operator+inputNumber)
+      inputNumber += $(this).text();
+      $('#calcInput').val(numberOne+operator+inputNumber)
     }
 }
 
+//set calculation operator
 function setOperator() {
     operator = $(this).text();
     numberOne=inputNumber;
@@ -47,6 +49,7 @@ function setOperator() {
     console.log(operator, numberOne)
 }
 
+// send user input to server
 function equals() {
     numberTwo=inputNumber;
     console.log(numberOne, operator, numberTwo)
@@ -67,6 +70,7 @@ function equals() {
       })
 }
 
+//requst updated calculator history from server
 function getCalculation() {   
     $.ajax({
       method: 'GET',

@@ -1,0 +1,10 @@
+#buttonContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 40vw;
+}
+
+#calcInput {
+    width: 39.3vw;
+    height: 5vh;
+}
