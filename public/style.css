@@ -2,9 +2,29 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
     width: 40vw;
+    height: 40vh;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 #calcInput {
     width: 39.3vw;
     height: 5vh;
+    font-size: x-large;
+}
+
+button {
+    margin: 2px;
+    border-radius: 5px;
+} 
+.numberButton {
+    background-color: orange;
+}
+
+#calcBody {
+    width: 40vw;
+    height: 50vh;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: darkslategrey;
 }
