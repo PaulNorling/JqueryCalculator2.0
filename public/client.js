@@ -1,72 +1,50 @@
 $(document).ready(onReady);
 
-let inputNumber='';
-
-let operator='';
-
-let numberOne='';
-
-let numberTwo='';
+let equation='';
 
 function onReady() {
     console.log("onReady")
-    $('#oneButton').on('click', numberConcat)
-    $('#twoButton').on('click', numberConcat)
-    $('#threeButton').on('click', numberConcat)
-    $('#fourButton').on('click', numberConcat)
-    $('#fiveButton').on('click', numberConcat)
-    $('#sixButton').on('click', numberConcat)
-    $('#sevenButton').on('click', numberConcat)
-    $('#eightButton').on('click', numberConcat)
-    $('#nineButton').on('click', numberConcat)
-    $('#zeroButton').on('click', numberConcat)
-    $('#decimalButton').on('click', numberConcat)
-    $('#plusButton').on('click', setOperator)
-    $('#minusButton').on('click', setOperator)
-    $('#multiplyButton').on('click', setOperator)
-    $('#divdeButton').on('click', setOperator)
+    $('#oneButton').on('click', equationInput)
+    $('#twoButton').on('click', equationInput)
+    $('#threeButton').on('click', equationInput)
+    $('#fourButton').on('click', equationInput)
+    $('#fiveButton').on('click', equationInput)
+    $('#sixButton').on('click', equationInput)
+    $('#sevenButton').on('click', equationInput)
+    $('#eightButton').on('click', equationInput)
+    $('#nineButton').on('click', equationInput)
+    $('#zeroButton').on('click', equationInput)
+    $('#decimalButton').on('click', equationInput)
+    $('#plusButton').on('click', equationInput)
+    $('#minusButton').on('click', equationInput)
+    $('#multiplyButton').on('click', equationInput)
+    $('#divdeButton').on('click', equationInput)
+    $('#leftParentheses').on('click', equationInput)
+    $('#rightParentheses').on('click', equationInput)
     $('#equalsButton').on('click',equals)
     $('#clearButton').on('click', clearInput)
     $('#clearAll-btn').on('click', clearAll)
 }
 
-function numberConcat() {
-    if(numberOne==''){
-      inputNumber += $(this).text();
-    $('#calcInput').val(inputNumber)
-    }else if(numberOne!==''){
-      inputNumber += $(this).text();
-      $('#calcInput').val(numberOne+operator+inputNumber)
-    }
-}
-
-//set calculation operator
-function setOperator() {
-    operator = $(this).text();
-    numberOne=inputNumber;
-    $('#calcInput').val(numberOne+operator);
-    inputNumber='';
-    console.log(operator, numberOne)
+function equationInput() {
+    equation += $(this).text();
+    $('#calcInput').val(equation)
 }
 
 // send user input to server
 function equals() {
-    numberTwo=inputNumber;
-    console.log(numberOne, operator, numberTwo)
     $.ajax({
         method: 'POST',
         url: '/calculation',
         data: {
-          numberOne: numberOne,
-          numberTwo: numberTwo,
-          operator: operator
+          equation: equation,
         }
         }).then(function(response) {
         console.log(response);
         clearInput();
         getCalculation();
-      }).catch(function(error) {
-        alert(error);
+      }).catch(function() {
+        alert('Invalid Entry');
       })
 }
 
@@ -76,13 +54,12 @@ function getCalculation() {
       method: 'GET',
       url: '/calculation'
     }).then(function(response){
-      console.log(response);
      appendToDom(response);
     }).catch(function(error){
       alert('Fail', error);
     })
   
-  }
+}
 
 // render to dom
 function appendToDom(response) {
@@ -93,23 +70,19 @@ function appendToDom(response) {
     $('#calculation').empty();
     for(let i = 0; i<response.length; i++){
       $('#output').prepend(`
-      <li>${response[i].numberOne}${response[i].operator}${response[i].numberTwo}=${response[i].answer}</li>  
+      <li>${response[i].equation}=${response[i].answer}</li>  
       `)
-      console.log(response[i].answer)
       $('#calculation').empty();
       $('#calculation').append(`${response[i].answer}`)
     }
   
-  }
+}
 
 //clear input values and unselect operator
 function clearInput() {
     $('#calcInput').val('');
-    numberOne='';
-    numberTwo='';
-    inputNumber='';
-    operator = null;
-  }
+    equation='';
+}
 
 //request sever to clear history set all fields to empty
 function clearAll() {    
@@ -123,6 +96,6 @@ function clearAll() {
     }).catch(function(error){
       alert('something went wrong',error)
     })
-  }
+}
   
 
