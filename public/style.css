@@ -8,9 +8,27 @@
 }
 
 #calcInput {
-    width: 39.3vw;
+    padding-top: 2vh;
+    margin-left: 1vw;
+    width: 38vw;
     height: 5vh;
     font-size: x-large;
+    font-weight: 900;
+    overflow: auto;
+    background-color: white;
+}
+
+#calcHistory {
+    padding-top: 2vh;
+    margin-left: 1vw;
+    width: 38vw;
+    height: 5vh;
+    font-size: x-large;
+    overflow: auto;
+    background-color: white;
+    display:flex; 
+    flex-direction:column-reverse;
+    list-style-type: none;
 }
 
 button {
@@ -23,7 +41,8 @@ button {
 
 #calcBody {
     width: 40vw;
-    height: 50vh;
+    height: 54vh;
+    padding-top: 2vh;
     margin-left: auto;
     margin-right: auto;
     background-color: darkslategrey;

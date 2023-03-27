@@ -27,12 +27,14 @@ function onReady() {
 }
 
 function equationInput() {
+    $('#calcInput').empty();
     equation += $(this).text();
-    $('#calcInput').val(equation)
+    $('#calcInput').append(equation)
 }
 
 // send user input to server
 function equals() {
+    $('#calcInput').empty();
     $.ajax({
         method: 'POST',
         url: '/calculation',
@@ -54,7 +56,7 @@ function getCalculation() {
       method: 'GET',
       url: '/calculation'
     }).then(function(response){
-     appendToDom(response);
+      appendToDom(response);
     }).catch(function(error){
       alert('Fail', error);
     })
@@ -63,24 +65,20 @@ function getCalculation() {
 
 // render to dom
 function appendToDom(response) {
-    $('#calcInput').val('');
-    operator = null;
-    inputNumber='';
-    $('#output').empty(); 
-    $('#calculation').empty();
+    $('#calcHistory').empty(); 
     for(let i = 0; i<response.length; i++){
-      $('#output').prepend(`
+      $('#calcHistory').prepend(`
       <li>${response[i].equation}=${response[i].answer}</li>  
       `)
-      $('#calculation').empty();
-      $('#calculation').append(`${response[i].answer}`)
+      $('#calcInput').empty();
+      $('#calcInput').append(`${response[i].answer}`)
+      equation=`${response[i].answer}`
     }
-  
 }
 
-//clear input values and unselect operator
+//clear input values
 function clearInput() {
-    $('#calcInput').val('');
+    $('#calcInput').empty();
     equation='';
 }
 
