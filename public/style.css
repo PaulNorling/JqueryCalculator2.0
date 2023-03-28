@@ -1,49 +1,99 @@
-#buttonContainer {
-    display: grid;
-    grid-template-columns: auto auto auto auto;
-    width: 40vw;
-    height: 40vh;
+body {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+#calcBody {
+    width: 35vw;
+    height: 78vh;
+    padding-top: 2vh;
     margin-left: auto;
     margin-right: auto;
+    background-color: #202020;
+    border-radius: 10px;
+    box-shadow: 25px 25px 75px rgba(0, 0, 0, 0.25),
+    10px 10px 70px rgba(0, 0, 0, 0.25), inset -5px -5px 15px rgba(0, 0, 0, 0.25),
+    inset 5px 5px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* ------display------ */
+#display {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 1vh;
+    width: 28vw;
+    height: 10vh;
 }
 
 #calcInput {
-    padding-top: 2vh;
-    margin-left: 1vw;
-    width: 38vw;
+    width: 28vw;
     height: 5vh;
     font-size: x-large;
     font-weight: 900;
     overflow: auto;
-    background-color: white;
+    background-color: #a7af7c;
+    text-align: right;
+    border: none;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
 }
 
 #calcHistory {
-    padding-top: 2vh;
-    margin-left: 1vw;
-    width: 38vw;
-    height: 5vh;
+    width: 28vw;
+    height: 7vh;
     font-size: x-large;
     overflow: auto;
-    background-color: white;
+    background-color:#a7af7c;
     display:flex; 
     flex-direction:column-reverse;
     list-style-type: none;
+    text-align: right;
+    border: none;
+    border-top-right-radius: 5px;
+    border-top-left-radius: 5px;
 }
 
-button {
-    margin: 2px;
-    border-radius: 5px;
-} 
-.numberButton {
-    background-color: orange;
-}
-
-#calcBody {
-    width: 40vw;
-    height: 54vh;
-    padding-top: 2vh;
+/* ------buttons------ */
+#buttonContainer {
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    justify-content: center;
+    width: 28vw;
+    height: 50vh;
+    margin-top: 5vh;
     margin-left: auto;
     margin-right: auto;
-    background-color: darkslategrey;
 }
+
+.btn {
+    margin: 8px;
+    /* background-color: #1479c9; */
+    height: 10vh;
+    width: 10vh;
+    background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
+    color: #fff;
+    box-shadow: inset -8px 0 8px rgba(0, 0, 0, 0.15),
+    inset 0 -8px 8px rgba(0, 0, 0, 0.25), 0 0 0 2px rgba(0, 0, 0, 0.75),
+    10px 20px 25px rgba(0, 0, 0, 0.4);
+    user-select: none;
+    cursor: pointer;
+    font-weight: 400;
+    border-radius: 10px;
+} 
+
+#equalsButton {
+    background: #1479c9;
+}
+
+#clearAllButton {
+    background: #f00;
+}
+
+#plusButton,
+#minusButton,
+#multiplyButton,
+#divdeButton {
+    background: orange;
+}
+
+
+

@@ -23,7 +23,7 @@ function onReady() {
     $('#rightParentheses').on('click', equationInput)
     $('#equalsButton').on('click',equals)
     $('#clearButton').on('click', clearInput)
-    $('#clearAll-btn').on('click', clearAll)
+    $('#clearAllButton').on('click', clearAll)
 }
 
 function equationInput() {
