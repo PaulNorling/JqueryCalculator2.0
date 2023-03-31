@@ -26,6 +26,7 @@ function onReady() {
     $('#clearAllButton').on('click', clearAll)
 }
 
+//build equation string and diplay selection on input
 function equationInput() {
     $('#calcInput').empty();
     equation += $(this).text();
