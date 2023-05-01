@@ -27,7 +27,7 @@ body {
 #calcInput {
     width: 28vw;
     height: 5vh;
-    font-size: x-large;
+    font-size: 4vh;
     font-weight: 900;
     overflow: auto;
     background-color: #a7af7c;
@@ -40,7 +40,7 @@ body {
 #calcHistory {
     width: 28vw;
     height: 7vh;
-    font-size: x-large;
+    font-size: 3vh;
     overflow: auto;
     background-color:#a7af7c;
     display:flex; 
@@ -65,7 +65,7 @@ body {
 }
 
 .btn {
-    margin: 8px;
+    margin: .6vw;
     height: 10vh;
     width: 6vw;
     background: linear-gradient(180deg, #2f2f2f, #3f3f3f);
@@ -76,7 +76,8 @@ body {
     user-select: none;
     cursor: pointer;
     font-weight: 400;
-    border-radius: 10px;
+    font-size: 3vh;
+    border-radius: .6em;
 } 
 
 #equalsButton {
